@@ -18,6 +18,16 @@ const login = async (userName, password) => {
   return { ...user._doc, token };
 };
 
+const create = async (userName, password) => {
+  const hashPassword = md5(password);
+  await model.create(userName, hashPassword);
+
+  const token = generateToken({ userName });
+
+  return { userName, token };
+};
+
 module.exports = {
   login,
+  create,
 };
