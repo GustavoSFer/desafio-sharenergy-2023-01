@@ -27,7 +27,14 @@ const create = async (userName, password) => {
   return { userName, token };
 };
 
+const getAll = async () => {
+  const users = await model.getAll();
+
+  return users;
+};
+
 module.exports = {
   login,
   create,
+  getAll,
 };
