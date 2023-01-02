@@ -1,0 +1,88 @@
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Input from '../Components/Input';
+import Button from '../Components/Button';
+import MyContext from '../MyContext/MyContext';
+import {
+  isValidEmail,
+  isValidPassword,
+  isValidName,
+  confirmPassword,
+} from '../Util/Validacao';
+
+function Cadastro() {
+  const history = useNavigate();
+  const {
+    MIN_PASSWORD_LANGTH,
+    email, setEmail,
+    name, setName,
+    password, setPassword,
+    confirmePassword, setConfirmePassword,
+  } = useContext(MyContext);
+
+  const [msgErro, setMsgErro] = useState(false);
+
+  const handleClick = () => {
+    if (
+      isValidEmail(email)
+      && isValidPassword(password, MIN_PASSWORD_LANGTH)
+      && isValidName(name)
+      && confirmPassword(password, confirmePassword)
+    ) {
+      setMsgErro(false);
+      history('/home');
+    } else {
+      setMsgErro(true);
+    }
+  };
+
+  return (
+    <main className="text-center morgin-auto">
+      <div className="row row-cols-1 row-cols-lg-2 m-2 width">
+        <div className="color-form">
+          <h1>Crie sua conta</h1>
+          <Input
+            type="text"
+            name="E-mail"
+            handleChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+
+          <Input
+            type="text"
+            name="Nome"
+            handleChange={(e) => setName(e.target.value)}
+            value={name}
+          />
+
+          <Input
+            type="password"
+            name="Senha"
+            handleChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+          <p className="min-password text-end">
+            {`Caracteres minimo para senha: ${MIN_PASSWORD_LANGTH}`}
+          </p>
+
+          <Input
+            type="password"
+            name="Confirme sua senha"
+            handleChange={(e) => setConfirmePassword(e.target.value)}
+            value={confirmePassword}
+          />
+
+          {
+              msgErro
+                && <p className="text-danger">Dados incorreto! Verificar todos os campos.</p>
+            }
+
+          <Button click={handleClick} sty="w-100" dataTestId="btn-entrar">SALVAR</Button>
+        </div>
+      </div>
+    </main>
+
+  );
+}
+
+export default Cadastro;

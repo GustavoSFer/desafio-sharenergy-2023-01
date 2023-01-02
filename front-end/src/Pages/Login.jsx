@@ -13,7 +13,7 @@ function Login() {
   const handleClick = async () => {
     try {
       const body = { userName, password };
-      const login = await loginUser('/loginUser', body);
+      const login = await loginUser('/user', body);
       setMsgErro('');
       localStorage.setItem('user', JSON.stringify(login));
       history('/home');
