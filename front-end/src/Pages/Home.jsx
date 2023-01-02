@@ -16,6 +16,12 @@ function Home() {
 
   return (
     <main>
+      <div className="d-flex justify-content-between container mt-2">
+        <div>Foto</div>
+        <div>Nome</div>
+        <div>email</div>
+        <div>idade</div>
+      </div>
       {
         resultApi.length > 0
         && (

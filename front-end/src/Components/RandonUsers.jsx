@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 
 function RandonUsers({ user }) {
   return (
-    <div>
+    <div className="border border-primary rounded d-flex justify-content-between container mt-2">
       <img src={user.picture.thumbnail} alt={user.id.value} />
-      <p>
+      <div>
         {user.name.first}
         <span>
           {` ${user.name.last}`}
         </span>
-      </p>
-      <p>{user.email}</p>
-      <p>
-        { `idade: ${user.dob.age}`}
-      </p>
+      </div>
+      <div>{user.email}</div>
+      <div>
+        {user.dob.age}
+      </div>
     </div>
   );
 }
