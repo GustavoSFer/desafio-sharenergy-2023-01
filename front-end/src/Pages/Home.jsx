@@ -4,6 +4,13 @@ import randonUser from '../Services/Request';
 
 function Home() {
   const [resultApi, setResultApi] = useState([]);
+  const [itensPerPage, setItensPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const pages = Math.ceil(resultApi.length / itensPerPage);
+  const startIndex = currentPage * itensPerPage;
+  const endIndex = startIndex + itensPerPage;
+  const currentItens = resultApi.slice(startIndex, endIndex);
 
   const api = async () => {
     const result = await randonUser(50);
@@ -13,6 +20,10 @@ function Home() {
   useEffect(() => {
     api();
   }, []);
+
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [itensPerPage]);
 
   return (
     <main>
@@ -25,9 +36,28 @@ function Home() {
       {
         resultApi.length > 0
         && (
-          resultApi.map((item) => <RandonUsers user={item} key={item.email} />)
+          currentItens.map((item) => <RandonUsers user={item} key={item.email} />)
         )
       }
+      <div>
+        {
+          Array.from(Array(pages), (item, index) => (
+            // eslint-disable-next-line react/button-has-type
+            <button value={index} onClick={(e) => setCurrentPage(Number(e.target.value))}>
+              {index + 1}
+            </button>
+          ))
+        }
+      </div>
+
+      <div>
+        <span>Quantos itens por pagina gostaria de ver?</span>
+        <select value={itensPerPage} onChange={(e) => setItensPerPage(Number(e.target.value))}>
+          <option value={10}>10</option>
+          <option value={20}>20</option>
+          <option value={30}>30</option>
+        </select>
+      </div>
     </main>
   );
 }

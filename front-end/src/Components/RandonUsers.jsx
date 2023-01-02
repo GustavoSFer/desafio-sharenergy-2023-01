@@ -33,7 +33,7 @@ RandonUsers.propTypes = {
     }),
     email: PropTypes.string,
     dob: PropTypes.shape({
-      age: PropTypes.string,
+      age: PropTypes.number,
     }),
   }).isRequired,
 };
