@@ -4,6 +4,7 @@ import Login from '../Pages/Login';
 import Cadastro from '../Pages/Cadastro';
 import Home from '../Pages/Home';
 import HttpCats from '../Pages/HttpCats';
+import RandomDog from '../Pages/RandomDog';
 
 function Routers() {
   return (
@@ -12,6 +13,7 @@ function Routers() {
       <Route path="/cadastro" element={<Cadastro />} />
       <Route path="/home" element={<Home />} />
       <Route path="/cats" element={<HttpCats />} />
+      <Route path="/dogs" element={<RandomDog />} />
     </Routes>
   );
 }
