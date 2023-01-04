@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../Components/Button';
+import Header from '../Components/Header';
 import Input from '../Components/Input';
 import { httpCats } from '../Services/Request';
 
@@ -11,7 +12,10 @@ function HttpCats() {
   };
 
   return (
-    <div>
+    <div className="container">
+      <div>
+        <Header />
+      </div>
       <div>
         <Input
           name="Informe o Status Code Http"

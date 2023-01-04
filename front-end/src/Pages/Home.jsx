@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Header from '../Components/Header';
 import RandonUsers from '../Components/RandonUsers';
 import Search from '../Components/Search';
 import { randonUser } from '../Services/Request';
@@ -28,6 +29,9 @@ function Home() {
 
   return (
     <main className="container">
+      <div>
+        <Header />
+      </div>
       <Search resultApi={resultApi} api={api} setResultApi={setResultApi} />
       <div className="d-flex justify-content-between mt-2">
         <div>Foto</div>
