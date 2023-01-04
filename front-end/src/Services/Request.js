@@ -4,4 +4,16 @@ const randonUser = async (qtd = 20) => {
   return results;
 };
 
-export default randonUser;
+const httpCats = async (statusCode) => {
+  console.log('entramos aqui');
+  const cats = await fetch(`http.cat/${statusCode}`);
+  console.log(cats);
+  const { results } = await cats.json();
+  console.log('>>>>>>', results);
+  return results;
+};
+
+export {
+  randonUser,
+  httpCats,
+};

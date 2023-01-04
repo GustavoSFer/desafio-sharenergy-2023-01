@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import RandonUsers from '../Components/RandonUsers';
 import Search from '../Components/Search';
-import randonUser from '../Services/Request';
+import { randonUser } from '../Services/Request';
 
 function Home() {
   const [resultApi, setResultApi] = useState([]);
