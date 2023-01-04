@@ -29,6 +29,12 @@ function Header() {
         >
           Dogs
         </Link>
+        <Link
+          to="/list"
+          className="m-4 text-light text-decoration-none fw-bolder"
+        >
+          Customer
+        </Link>
       </div>
       <div>
         <Link

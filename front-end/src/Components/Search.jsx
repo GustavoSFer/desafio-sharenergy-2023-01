@@ -31,7 +31,7 @@ function Search({ resultApi, api, setResultApi }) {
   };
 
   return (
-    <fieldset className=" mb-4 border border-primary p-2 mt-2 rounded">
+    <fieldset className="mb-4 border border-primary p-2 mt-2 rounded">
       <Input
         type="text"
         name="Pesquisar por nome ou e-mail"

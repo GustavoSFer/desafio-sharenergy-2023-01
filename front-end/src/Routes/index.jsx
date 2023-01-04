@@ -5,6 +5,7 @@ import Cadastro from '../Pages/Cadastro';
 import Home from '../Pages/Home';
 import HttpCats from '../Pages/HttpCats';
 import RandomDog from '../Pages/RandomDog';
+import ListCustomer from '../Pages/ListCustomer';
 
 function Routers() {
   return (
@@ -14,6 +15,7 @@ function Routers() {
       <Route path="/home" element={<Home />} />
       <Route path="/cats" element={<HttpCats />} />
       <Route path="/dogs" element={<RandomDog />} />
+      <Route path="/list" element={<ListCustomer />} />
     </Routes>
   );
 }
