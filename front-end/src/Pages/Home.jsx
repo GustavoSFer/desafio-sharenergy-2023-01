@@ -45,20 +45,28 @@ function Home() {
           currentItens.map((item) => <RandonUsers user={item} key={item.email} />)
         )
       }
-      <div>
+      <div className="text-center">
         {
           Array.from(Array(pages), (item, index) => (
             // eslint-disable-next-line react/button-has-type
-            <button value={index} onClick={(e) => setCurrentPage(Number(e.target.value))}>
+            <button
+              value={index}
+              onClick={(e) => setCurrentPage(Number(e.target.value))}
+              className="btn btn-primary m-1"
+            >
               {index + 1}
             </button>
           ))
         }
       </div>
 
-      <div>
-        <span>Quantos itens por pagina gostaria de ver?</span>
-        <select value={itensPerPage} onChange={(e) => setItensPerPage(Number(e.target.value))}>
+      <div className="text-end">
+        <span className="col-9">Quantos itens por pagina gostaria de ver?</span>
+        <select
+          value={itensPerPage}
+          onChange={(e) => setItensPerPage(Number(e.target.value))}
+          className="m-2"
+        >
           <option value={10}>10</option>
           <option value={20}>20</option>
           <option value={30}>30</option>

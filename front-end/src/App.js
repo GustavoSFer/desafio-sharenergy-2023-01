@@ -30,7 +30,9 @@ function App() {
 
   return (
     <MyContext.Provider value={contextValue}>
-      <Routers />
+      <div className="bg-dark-subtle">
+        <Routers />
+      </div>
     </MyContext.Provider>
   );
 }
