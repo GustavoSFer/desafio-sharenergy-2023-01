@@ -6,14 +6,14 @@ import './App.css';
 function App() {
   const MIN_PASSWORD_LANGTH = 5;
   const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
+  const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmePassword, setConfirmePassword] = useState('');
   const [msgErro, setMsgErro] = useState(false);
 
   const clearForm = () => {
     setEmail('');
-    setName('');
+    setUserName('');
     setPassword('');
     setConfirmePassword('');
   };
@@ -21,7 +21,7 @@ function App() {
   const contextValue = {
     MIN_PASSWORD_LANGTH,
     email, setEmail,
-    name, setName,
+    userName, setUserName,
     password, setPassword,
     confirmePassword, setConfirmePassword,
     clearForm,

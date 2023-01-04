@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { createUser } from '../Services';
 import Input from '../Components/Input';
 import Button from '../Components/Button';
 import MyContext from '../MyContext/MyContext';
@@ -15,22 +16,38 @@ function Cadastro() {
   const {
     MIN_PASSWORD_LANGTH,
     email, setEmail,
-    name, setName,
+    userName, setUserName,
     password, setPassword,
     confirmePassword, setConfirmePassword,
   } = useContext(MyContext);
 
   const [msgErro, setMsgErro] = useState(false);
 
-  const handleClick = () => {
+  const clearForm = () => {
+    setEmail('');
+    setUserName('');
+    setPassword('');
+    setConfirmePassword('');
+    setMsgErro('');
+  };
+
+  const handleClick = async () => {
     if (
       isValidEmail(email)
       && isValidPassword(password, MIN_PASSWORD_LANGTH)
-      && isValidName(name)
+      && isValidName(userName)
       && confirmPassword(password, confirmePassword)
     ) {
-      setMsgErro(false);
-      history('/home');
+      try {
+        const body = { userName, password };
+        const login = await createUser('/user/create', body);
+        localStorage.setItem('user', JSON.stringify(login));
+        clearForm();
+        setMsgErro(false);
+        history('/home');
+      } catch (error) {
+        setMsgErro(error);
+      }
     } else {
       setMsgErro(true);
     }
@@ -50,9 +67,9 @@ function Cadastro() {
 
           <Input
             type="text"
-            name="Nome"
-            handleChange={(e) => setName(e.target.value)}
-            value={name}
+            name="User Name"
+            handleChange={(e) => setUserName(e.target.value)}
+            value={userName}
           />
 
           <Input

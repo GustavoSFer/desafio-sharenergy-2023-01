@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Input from '../Components/Input';
 import Button from '../Components/Button';
@@ -10,12 +10,19 @@ function Login() {
   const [password, setPassword] = useState('');
   const [msgErro, setMsgErro] = useState(false);
 
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      history('/home');
+    }
+  }, []);
+
   const handleClick = async () => {
     try {
       const body = { userName, password };
-      const login = await loginUser('/user', body);
+      const setLogin = await loginUser('/user', body);
       setMsgErro('');
-      localStorage.setItem('user', JSON.stringify(login));
+      localStorage.setItem('user', JSON.stringify(setLogin));
       history('/home');
     } catch (error) {
       setMsgErro(error);
