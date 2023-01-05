@@ -6,8 +6,8 @@ const login = async (userName) => {
   return user;
 };
 
-const create = async (userName, password) => {
-  const user = await model.create({ userName, password });
+const create = async (email, userName, password) => {
+  const user = await model.create({ email, userName, password });
 
   return user;
 };

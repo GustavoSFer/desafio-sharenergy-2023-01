@@ -18,13 +18,13 @@ const login = async (userName, password) => {
   return { ...user._doc, token };
 };
 
-const create = async (userName, password) => {
+const create = async (email, userName, password) => {
   const hashPassword = md5(password);
-  await model.create(userName, hashPassword);
+  await model.create(email, userName, hashPassword);
 
   const token = generateToken({ userName });
 
-  return { userName, token };
+  return { email, userName, token };
 };
 
 const getAll = async () => {
