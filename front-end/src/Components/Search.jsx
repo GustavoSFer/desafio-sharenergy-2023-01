@@ -85,7 +85,8 @@ function Search({ resultApi, api, setResultApi }) {
 }
 
 Search.propTypes = {
-  resultApi: PropTypes.arrayOf.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  resultApi: PropTypes.array.isRequired,
   api: PropTypes.func.isRequired,
   setResultApi: PropTypes.func.isRequired,
 };

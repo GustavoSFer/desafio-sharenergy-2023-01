@@ -18,6 +18,7 @@ function HttpCats() {
       </div>
       <div>
         <Input
+          type="text"
           name="Informe o Status Code Http"
           handleChange={(e) => setStatusSttp(e.target.value)}
           value={statusHttp}

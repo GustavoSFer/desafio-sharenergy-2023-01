@@ -5,11 +5,8 @@ const randonUser = async (qtd = 20) => {
 };
 
 const httpCats = async (statusCode) => {
-  console.log('entramos aqui');
-  const cats = await fetch(`http.cat/${statusCode}`);
-  console.log(cats);
+  const cats = await fetch(`https://http.cat/${statusCode}`);
   const { results } = await cats.json();
-  console.log('>>>>>>', results);
   return results;
 };
 

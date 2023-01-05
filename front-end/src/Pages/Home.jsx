@@ -42,7 +42,7 @@ function Home() {
       {
         resultApi.length > 0
         && (
-          currentItens.map((item) => <RandonUsers user={item} key={item.email} />)
+          currentItens.map((item) => <RandonUsers key={item.email} user={item} />)
         )
       }
       <div className="text-center">
