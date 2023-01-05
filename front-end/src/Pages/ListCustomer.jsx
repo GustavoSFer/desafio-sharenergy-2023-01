@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import Input from '../Components/Input';
 import Button from '../Components/Button';
 import Header from '../Components/Header';
+import Customer from '../Components/Customer';
 
 function ListCustomer() {
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [emaill, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
   const [cpf, setCpf] = useState('');
+  const [data, setData] = useState([]);
 
   const getItemStorage = () => {
     const customer = JSON.parse(localStorage.getItem('customer'));
@@ -16,22 +18,39 @@ function ListCustomer() {
   };
 
   const setItemStorage = (item) => {
-    const novo = getItemStorage();
-    if (novo !== null) {
-      localStorage.setItem('customer', JSON.stringify([...novo, item]));
+    const getStorage = getItemStorage();
+    if (getStorage !== null) {
+      localStorage.setItem('customer', JSON.stringify([...getStorage, item]));
+      setData([...getStorage, item]);
     } else {
       localStorage.setItem('customer', JSON.stringify([item]));
+      setData([item]);
     }
   };
 
   const salveCustomer = () => {
     setItemStorage({
-      name, email, phone, address, cpf,
+      name, email: emaill, phone, address, cpf,
     });
   };
 
+  const removeItem = (item) => {
+    const newCustomer = data.filter(({ email }) => email !== item.email);
+    setData(newCustomer);
+    if (newCustomer.length > 0) {
+      localStorage.setItem('customer', JSON.stringify([newCustomer]));
+    } else {
+      localStorage.removeItem('customer');
+    }
+  };
+
   useEffect(() => {
-    getItemStorage();
+    const itens = getItemStorage();
+    if (itens) {
+      setData(itens);
+    } else {
+      setData([]);
+    }
   }, []);
 
   return (
@@ -48,7 +67,7 @@ function ListCustomer() {
           type="text"
           name="email"
           handleChange={(e) => setEmail(e.target.value)}
-          value={email}
+          value={emaill}
         />
         <Input
           type="text"
@@ -70,6 +89,15 @@ function ListCustomer() {
         />
         <Button click={salveCustomer}>Salvar</Button>
       </form>
+      <div>
+        {
+          data.length > 0
+          && data.map((item) => (
+            <Customer item={item} key={item.email} click={() => removeItem(item)} />
+          ))
+        }
+      </div>
+
     </div>
   );
 }
