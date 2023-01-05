@@ -47,7 +47,7 @@ function ListCustomer() {
     const newCustomer = data.filter(({ email }) => email !== item.email);
     setData(newCustomer);
     if (newCustomer.length > 0) {
-      localStorage.setItem('customer', JSON.stringify([newCustomer]));
+      localStorage.setItem('customer', JSON.stringify([...newCustomer]));
     } else {
       localStorage.removeItem('customer');
     }
