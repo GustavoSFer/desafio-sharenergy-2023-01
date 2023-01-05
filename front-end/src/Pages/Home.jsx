@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 import RandonUsers from '../Components/RandonUsers';
 import Search from '../Components/Search';
@@ -72,6 +73,8 @@ function Home() {
           <option value={30}>30</option>
         </select>
       </div>
+
+      <Footer />
     </main>
   );
 }

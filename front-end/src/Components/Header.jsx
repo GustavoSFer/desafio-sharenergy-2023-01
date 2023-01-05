@@ -8,7 +8,7 @@ function Header() {
 
   return (
     <header
-      className="mt-4 border border-success p-3 rounded bg-primary d-flex justify-content-between"
+      className="mt-4 p-3 rounded bg-primary d-flex justify-content-between"
     >
       <div>
         <Link
