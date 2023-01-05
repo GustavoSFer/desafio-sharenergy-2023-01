@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
 
-function Customer({ item, click }) {
+function Customer({ item, clickE, clickEd }) {
   return (
     <table className="table">
       <thead>
@@ -24,6 +24,7 @@ function Customer({ item, click }) {
           <td>
             <Button
               sty="me-2"
+              click={clickEd}
             >
               Editar
             </Button>
@@ -31,7 +32,7 @@ function Customer({ item, click }) {
           <td>
             <Button
               sty="me-2"
-              click={click}
+              click={clickE}
             >
               Excluir
             </Button>
@@ -50,7 +51,8 @@ Customer.propTypes = {
     address: PropTypes.string,
     cpf: PropTypes.string,
   }).isRequired,
-  click: PropTypes.func.isRequired,
+  clickE: PropTypes.func.isRequired,
+  clickEd: PropTypes.func.isRequired,
 };
 
 export default Customer;

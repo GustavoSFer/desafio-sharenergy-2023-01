@@ -12,6 +12,14 @@ function ListCustomer() {
   const [cpf, setCpf] = useState('');
   const [data, setData] = useState([]);
 
+  const clearData = () => {
+    setName('');
+    setEmail('');
+    setPhone('');
+    setAddress('');
+    setCpf('');
+  };
+
   const getItemStorage = () => {
     const customer = JSON.parse(localStorage.getItem('customer'));
     return customer;
@@ -32,6 +40,7 @@ function ListCustomer() {
     setItemStorage({
       name, email: emaill, phone, address, cpf,
     });
+    clearData();
   };
 
   const removeItem = (item) => {
@@ -42,6 +51,16 @@ function ListCustomer() {
     } else {
       localStorage.removeItem('customer');
     }
+  };
+
+  const editIem = (item) => {
+    setName(item.name);
+    setEmail(item.email);
+    setPhone(item.phone);
+    setAddress(item.address);
+    setCpf(item.cpf);
+
+    removeItem(item);
   };
 
   useEffect(() => {
@@ -93,7 +112,12 @@ function ListCustomer() {
         {
           data.length > 0
           && data.map((item) => (
-            <Customer item={item} key={item.email} click={() => removeItem(item)} />
+            <Customer
+              item={item}
+              key={item.email}
+              clickE={() => removeItem(item)}
+              clickEd={() => editIem(item)}
+            />
           ))
         }
       </div>
