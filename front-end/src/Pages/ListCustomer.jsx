@@ -6,6 +6,9 @@ import Customer from '../Components/Customer';
 import {
   isValidEmail,
   isValidName,
+  isValidPhone,
+  isValidAddress,
+  isValidCpf,
 } from '../Util/Validacao';
 
 function ListCustomer() {
@@ -45,12 +48,16 @@ function ListCustomer() {
     if (
       isValidEmail(emaill)
       && isValidName(name)
+      && isValidPhone(phone)
+      && isValidAddress(address)
+      && isValidCpf(cpf)
     ) {
       try {
         setItemStorage({
           name, email: emaill, phone, address, cpf,
         });
         clearData();
+        setMsgErro(false);
       } catch (error) {
         setMsgErro(error);
       }

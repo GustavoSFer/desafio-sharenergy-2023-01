@@ -9,9 +9,16 @@ const confirmPassword = (password, confirma) => (password === confirma);
 
 const isValidName = (name, minLength = 1) => (name.length > minLength);
 
+const isValidPhone = (phone) => (phone.length <= 11 && phone.length >= 9);
+const isValidAddress = (address) => (address.length > 5);
+const isValidCpf = (cpf) => (cpf.length >= 11);
+
 export {
   isValidEmail,
   isValidPassword,
   isValidName,
   confirmPassword,
+  isValidPhone,
+  isValidAddress,
+  isValidCpf,
 };
