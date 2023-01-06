@@ -3,6 +3,10 @@ import Input from '../Components/Input';
 import Button from '../Components/Button';
 import Header from '../Components/Header';
 import Customer from '../Components/Customer';
+import {
+  isValidEmail,
+  isValidName,
+} from '../Util/Validacao';
 
 function ListCustomer() {
   const [name, setName] = useState('');
@@ -11,6 +15,7 @@ function ListCustomer() {
   const [address, setAddress] = useState('');
   const [cpf, setCpf] = useState('');
   const [data, setData] = useState([]);
+  const [msgErro, setMsgErro] = useState(false);
 
   const clearData = () => {
     setName('');
@@ -37,10 +42,21 @@ function ListCustomer() {
   };
 
   const salveCustomer = () => {
-    setItemStorage({
-      name, email: emaill, phone, address, cpf,
-    });
-    clearData();
+    if (
+      isValidEmail(emaill)
+      && isValidName(name)
+    ) {
+      try {
+        setItemStorage({
+          name, email: emaill, phone, address, cpf,
+        });
+        clearData();
+      } catch (error) {
+        setMsgErro(error);
+      }
+    } else {
+      setMsgErro(true);
+    }
   };
 
   const removeItem = (item) => {
@@ -106,7 +122,11 @@ function ListCustomer() {
           handleChange={(e) => setCpf(e.target.value)}
           value={cpf}
         />
-        <Button click={salveCustomer}>Salvar</Button>
+        {
+          msgErro
+          && <p className="text-danger text-center">Dados incorreto! Verificar todos os campos.</p>
+        }
+        <Button sty="w-100" click={salveCustomer}>Salvar</Button>
       </form>
       <div>
         {

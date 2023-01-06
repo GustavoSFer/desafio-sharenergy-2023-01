@@ -11,3 +11,22 @@ body {
   border: 3px solid blue;
   width: 300px;
 }
+
+.login {
+  border-radius: 7px;
+  box-shadow: 10px 5px 5px rgb(154, 149, 149);
+  margin: auto;
+  margin-top: 10%;
+  padding: 50px 20px;
+  width: 500px;
+}
+
+.min-password {
+  font-size: 11px;
+  color: red;
+}
+
+.btn {
+  display: table-cell;
+  vertical-align: middle;
+}

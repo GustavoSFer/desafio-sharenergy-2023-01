@@ -54,8 +54,8 @@ function Cadastro() {
   };
 
   return (
-    <main className="text-center morgin-auto">
-      <div className="row row-cols-1 row-cols-lg-2 m-2 width">
+    <main className="text-center morgin-auto border border-primary login">
+      <div className="m-2">
         <div className="color-form">
           <h1>Crie sua conta</h1>
           <Input

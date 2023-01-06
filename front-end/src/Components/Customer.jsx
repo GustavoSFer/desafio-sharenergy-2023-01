@@ -7,31 +7,29 @@ function Customer({ item, clickE, clickEd }) {
     <table className="table">
       <thead>
         <tr>
-          <th scope="col">Nome</th>
-          <th scope="col">E-mail</th>
-          <th scope="col">Telefone</th>
-          <th scope="col">Endereço</th>
-          <th scope="col">CPF</th>
+          <th className="btn">Nome</th>
+          <th className="btn">E-mail</th>
+          <th className="btn">Telefone</th>
+          <th className="btn">Endereço</th>
+          <th className="btn">CPF</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>{item.name}</td>
-          <td>{item.email}</td>
-          <td>{item.phone}</td>
-          <td>{item.address}</td>
-          <td>{item.cpf}</td>
-          <td>
+          <td className="btn">{item.name}</td>
+          <td className="btn">{item.email}</td>
+          <td className="btn">{item.phone}</td>
+          <td className="btn">{item.address}</td>
+          <td className="btn">{item.cpf}</td>
+          <td className="btn">
             <Button
-              sty="me-2"
               click={clickEd}
             >
               Editar
             </Button>
           </td>
-          <td>
+          <td className="btn">
             <Button
-              sty="me-2"
               click={clickE}
             >
               Excluir

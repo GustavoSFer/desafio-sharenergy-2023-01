@@ -31,7 +31,7 @@ function Login() {
 
   return (
     <main className="text-center morgin-auto container mt-4">
-      <div className="col color-form border border-primary">
+      <div className="col color-form border border-primary login">
         <div>
           <Input
             type="text"
@@ -48,9 +48,9 @@ function Login() {
           <Button click={handleClick} sty="w-100" dataTestId="btn-entrar">Entrar</Button>
           { msgErro && <p className="text-danger">Usuário ou senha incorreto!</p> }
         </div>
-        <p className="m-3">
+        <p className="mt-5">
           Não tem uma conta?
-          <Link to="/cadastro" className="register">Registre-se</Link>
+          <Link to="/cadastro" className="ms-3">Registre-se</Link>
         </p>
       </div>
     </main>
