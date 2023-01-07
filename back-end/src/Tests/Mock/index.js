@@ -7,6 +7,15 @@ const dataDb = [
   },
 ];
 
+const createUser = [
+  {
+    email: 'gustavo@gmail.com',
+    userName: 'gustavo',
+    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Imd1c3Rhdm8iLCJpYXQiOjE2NzMxMDUxMTl9.tz_RauSOKg79PcsS5c3rOfYLtYRf_46woLYgjU2CET0',
+  },
+];
+
 module.exports = {
   dataDb,
+  createUser,
 };
