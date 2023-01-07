@@ -10,6 +10,7 @@ import {
   isValidAddress,
   isValidCpf,
 } from '../Util/Validacao';
+import Search from '../Components/Search';
 
 function ListCustomer() {
   const [name, setName] = useState('');
@@ -54,7 +55,7 @@ function ListCustomer() {
     ) {
       try {
         setItemStorage({
-          name, email: emaill, phone, address, cpf,
+          name: { first: name }, email: emaill, phone, address, cpf,
         });
         clearData();
         setMsgErro(false);
@@ -77,7 +78,7 @@ function ListCustomer() {
   };
 
   const editIem = (item) => {
-    setName(item.name);
+    setName(item.name.first);
     setEmail(item.email);
     setPhone(item.phone);
     setAddress(item.address);
@@ -86,13 +87,17 @@ function ListCustomer() {
     removeItem(item);
   };
 
-  useEffect(() => {
+  const api = () => {
     const itens = getItemStorage();
     if (itens) {
       setData(itens);
     } else {
       setData([]);
     }
+  };
+
+  useEffect(() => {
+    api();
   }, []);
 
   return (
@@ -135,6 +140,9 @@ function ListCustomer() {
         }
         <Button sty="w-100" click={salveCustomer}>Salvar</Button>
       </form>
+      <div>
+        <Search resultApi={data} api={api} setResultApi={setData} />
+      </div>
       <div>
         {
           data.length > 0

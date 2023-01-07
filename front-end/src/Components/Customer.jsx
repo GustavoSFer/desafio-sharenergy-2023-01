@@ -16,7 +16,7 @@ function Customer({ item, clickE, clickEd }) {
       </thead>
       <tbody>
         <tr>
-          <td className="btn">{item.name}</td>
+          <td className="btn">{item.name.first}</td>
           <td className="btn">{item.email}</td>
           <td className="btn">{item.phone}</td>
           <td className="btn">{item.address}</td>
