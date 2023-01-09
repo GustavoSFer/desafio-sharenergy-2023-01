@@ -95,6 +95,7 @@ function Cadastro() {
             }
 
           <Button click={handleClick} sty="w-100" dataTestId="btn-entrar">SALVAR</Button>
+          <Button click={() => { history('/'); }} sty="w-100">VOLTAR</Button>
         </div>
       </div>
     </main>

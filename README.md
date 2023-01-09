@@ -24,6 +24,12 @@
       <li>Random Dog.</li>
       <li>Criar lista de clientes.</li>
     </ul>
+    <br><br>
+    
+    ## Link Vídeo da apresentação do projeto
+    <a href="https://www.youtube.com/watch?v=hbtIa3hymmg">
+    https://www.youtube.com/watch?v=hbtIa3hymmg
+    </a>
 <br><br><br>
 
 # Instruções para iniciar o projeto
